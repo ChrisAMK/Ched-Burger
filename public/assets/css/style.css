@@ -1,19 +1,51 @@
+* body{
+    font-family: 'Balsamiq Sans', cursive;
+}
+
 li {
-  padding: 5px;
-  margin: 5px;
-  background: #faebd7;
+  padding: 20px;
+  margin: 10px;
+  background: gold;
+  list-style-type: none;
+  border-radius: 20px;
+  border-style: solid;
 }
 
 .label {
   font-weight: bold;
 }
 
-.create-update-form {
-  padding: 5px;
-  margin: 5px;
-  background: aqua;
+.addBtn {
+  background-color: rgb(255, 105, 105);
+  border-radius: 20px;
+  border-style: solid;
+
 }
 
 .form-group {
   margin-bottom: 5px;
+}
+
+.title {
+  text-align: center;
+  top: 50px;
+  background-color: gold;
+}
+
+#deleteBtn {
+  float: right;
+  bottom: 12px;
+  border-radius: 20px;
+  border-style: solid;
+}
+
+#devourBtn {
+  float: right;
+  bottom: 12px;
+  border-radius: 20px;
+  border-style: solid;
+}
+
+.hide {
+  display: none;
 }
