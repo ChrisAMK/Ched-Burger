@@ -1,6 +1,6 @@
 const orm = require("../config/orm.js");
-
-var burger = {
+// Creating a variable that uses the functions from the ORM, gives the functions parameter names, ready to be used
+const burger = {
     selectAll: function(callback) {
         orm.selectAll("burgers", function(response) {
             callback(response);

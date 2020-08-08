@@ -26,62 +26,58 @@ const objToSql = (object) => {
     return array.toString();
 }
 
+// Creating an Object that holds all the function to be exported
 const orm = {
+    // Creating a function that selects items from a table that is provided as a parameter
     selectAll: function(tableValue, callback) {
-        console.log("selectAll");
+        // Query string is the actual MySQL query that will be modified with parameter variables
         var queryString = "SELECT * FROM " + tableValue + ";";
         connection.query(queryString, function(err, response) {
         if (err) throw err;
+        // callback function returns the response from the MySQL Query
         callback(response);
         });
     },
+    // This function replaces the INSERT INTO MySQL Function
     insertOne: function(table, columns, values, callback) {
         console.log("insertOne");
         let queryString = "INSERT INTO " + table;
-
+        // Every parameter is added into the query string so it has the correct syntax
         queryString += " (";
         queryString += columns.toString();
         queryString += ") ";
         queryString += "VALUES (";
         queryString += printQuestionMarks(values.length);
         queryString += ") ";
-
-        console.log(queryString);
-
+        // This is the MySQL query that uses the query string prepared
         connection.query(queryString, values, function(err, response) {
             if (err) throw err;
             callback(response);
         });
     },
+    // This function is to replace the UPDATE MySQL Query
     updateOne: function(table, objectColumnKeyAndValue, condition, callback) {
-        console.log("updateOne");
         var queryString = "UPDATE " + table;
-
         queryString += " SET ";
         queryString += objToSql(objectColumnKeyAndValue);
         queryString += " WHERE ";
         queryString += condition;
-
-        console.log(queryString);
 
         connection.query(queryString, function(err, response) {
             if (err) throw err;
             callback(response);
         });
     },
+    // I added this delete function to delete a burger from the screen once devoured
     deleteOne: function(table, condition, callback) {
         let queryString = "DELETE FROM " + table;
         queryString += " WHERE ";
         queryString += condition;
-    
-        connection.query(queryString, function(err, result) {
-          if (err) {
-            throw err;
-          }
-    
-          callback(result);
+        connection.query(queryString, function(err, response) {
+          if (err) throw err;
+          callback(response);
         });
-      }
+    }
 }
-
+// Exporting the Object to be used else where
 module.exports = orm;

@@ -1,17 +1,21 @@
+// Requiring all the need packages
 const express = require("express");
 const router = express.Router();
 const burger = require("../models/burger.js");
 
+// On the homepage, use the ORM's SelectAll Function to retreive all Burgers from the MySQL Database
 router.get("/", function(request, response) {
     burger.selectAll(function(data) {
+        // Create a variable called HandlebarsObject so that can be passed to the Handlebars Package to be included in HTML
         let handlebarsObject = {
             burgers: data
         };
-        console.log(handlebarsObject);
+        // Pass the handlebarsobject variable to the index.handlebar files
         response.render("index", handlebarsObject);
     });
 });
 
+// This handles when the server receives a POST request, the Orm's InsertOne function is used with the request data
 router.post("/api/burgers", function(request, response) {
     burger.insertOne([
         "burger_name", "devoured"
@@ -22,11 +26,9 @@ router.post("/api/burgers", function(request, response) {
     });
 });
 
+// This handles the update functionally but using the UpdateOne function from the ORM with data from the request
 router.put("/api/burgers/:id", function(request, response) {
     let condition = "id = " + request.params.id;
-
-    console.log("condition", condition);
-
     burger.updateOne({
         devoured: request.body.devoured
     }, condition, function(result) {
@@ -38,10 +40,9 @@ router.put("/api/burgers/:id", function(request, response) {
     });
 });
 
+// This is a delete feature that was quickly added to Delete devoured Burgers
 router.delete("/api/burgers/:id", (request, response) => {
-
     var condition = `id = ${request.params.id}`;
-
     burger.deleteOne(condition, result => {
       if (result.affectedRows == 0) {
         // If no rows were changed, then the ID must not exist, so 404
@@ -52,6 +53,5 @@ router.delete("/api/burgers/:id", (request, response) => {
     });
 });
 
-
-
+// Export these function to be used by the Server
 module.exports = router;

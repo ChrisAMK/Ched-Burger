@@ -45,7 +45,7 @@ $(function() {
         }
       );
     });
-  
+    // On the click of a delete button, that element will send a delete request to the router
     $(".delete").on("click", function() {
 
       const id = $(this).data("id");
@@ -60,6 +60,4 @@ $(function() {
         }
       );
     });
-    
-    
   });
