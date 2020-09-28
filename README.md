@@ -1,7 +1,7 @@
-# Ched-Burger&middot; ![license](https://img.shields.io/badge/license-Academic%20Free%20License%20v3.0-blue) ![Maker's Mark](https://img.shields.io/github/repo-size/ChrisAMK/README-Generator?style=plastic)
+# Hungry-Cheds&middot; ![license](https://img.shields.io/badge/license-Academic%20Free%20License%20v3.0-blue) ![Maker's Mark](https://img.shields.io/github/repo-size/ChrisAMK/README-Generator?style=plastic)
 
 ## Deployed Link
-Github Link : https://github.com/ChrisAMK/README-GeneratorGithub
+Github Link : https://github.com/ChrisAMK/Hungry-Cheds
 
 Deployed Site Link: https://infinite-dawn-32982.herokuapp.com/
 
